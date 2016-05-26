@@ -115,14 +115,14 @@ minetest.register_node("abriglass:oneway_glass_dark", {
 	description = "Dark One-Way Glass",
 	drawtype = "nodebox",
 	paramtype = "light",
-    paramtype2 = "facedir",
+	paramtype2 = "facedir",
 	node_box = {
 		type = "fixed",
 		fixed = {
 			{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
 		},
 	},
-    groups = {cracky = 3},
+	groups = {cracky = 3},
 	tiles = {"abriglass_oneway_plain_glass.png", -- up
 			 "abriglass_oneway_plain_glass.png", -- down
 			 "abriglass_oneway_plain_glass.png", -- right
@@ -138,14 +138,14 @@ minetest.register_node("abriglass:oneway_glass_pale", {
 	description = "White One-Way Glass",
 	drawtype = "nodebox",
 	paramtype = "light",
-    paramtype2 = "facedir",
+	paramtype2 = "facedir",
 	node_box = {
 		type = "fixed",
 		fixed = {
 			{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
 		},
 	},
-    groups = {cracky = 3},
+	groups = {cracky = 3},
 	tiles = {"abriglass_oneway_plain_glass.png", -- up
 			 "abriglass_oneway_plain_glass.png", -- down
 			 "abriglass_oneway_plain_glass.png", -- right
@@ -164,14 +164,14 @@ minetest.register_node("abriglass:oneway_wall_dark", {
 	description = "Dark Block",
 	tiles = {"abriglass_oneway_wall.png"},
 	groups = {cracky = 3},
-    paramtype2 = "facedir",
+	paramtype2 = "facedir",
 })
 
 minetest.register_node("abriglass:oneway_wall_pale", {
 	description = "Pale Block",
 	tiles = {"abriglass_oneway_wall.png^[colorize:#E6E6FA:200"},
 	groups = {cracky = 3},
-    paramtype2 = "facedir",
+	paramtype2 = "facedir",
 })
 
 
