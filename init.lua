@@ -71,6 +71,7 @@ minetest.register_node("abriglass:glass_light_yellow", {
 minetest.register_node("abriglass:ghost_crystal", {
 	description = "Ghost Crystal",
 	tiles = {"abriglass_ghost_crystal.png"},
+	wield_image = "abriglass_ghost_crystal_wield.png",
 	groups = {cracky = 3},
 	use_texture_alpha = true,
 	sunlight_propagates = true,
