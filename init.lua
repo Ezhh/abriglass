@@ -8,7 +8,6 @@ Who did it: Shara RedCat.
 
 local is_darklands = true
 
-
 --boring glass because why not?
 
 minetest.register_node("abriglass:clear_glass", {
@@ -21,16 +20,6 @@ minetest.register_node("abriglass:clear_glass", {
 	drawtype = "glasslike",
 	sounds = default.node_sound_glass_defaults(),
 })
-
-minetest.register_craft({
-	output = 'abriglass:clear_glass 4', -- intentional lower yield
-	recipe = {
-		{'default:glass', '', 'default:glass' },
-		{'', 'default:glass', '' },
-		{'default:glass', '', 'default:glass' },
-	}
-})
-
 
 local plain_colors = {
 	"green", "blue", "red", "yellow",
@@ -55,20 +44,6 @@ for i in ipairs(plain_colors) do
 		light_source = (is_darklands and 14 or 4),
 		drawtype = "glasslike",
 		sounds = default.node_sound_glass_defaults(),
-	})
-
-	minetest.register_craft({
-		output = 'abriglass:'..nodesuffix..' 4',
-		recipe = {
-			{'abriglass:clear_glass', 'default:torch', 'abriglass:clear_glass' },
-			{'abriglass:clear_glass', 'dye:'..name, 'abriglass:clear_glass' },
-		}
-	})
-
-	minetest.register_craft({
-		type = "cooking",
-		recipe = "abriglass:"..nodesuffix,
-		output = "abriglass:clear_glass",
 	})
 end
 
@@ -234,4 +209,6 @@ minetest.register_node("abriglass:stained_glass_frosted", {
 	sounds = default.node_sound_glass_defaults(),
 })
 
+local modpath = minetest.get_modpath(minetest.get_current_modname())
+dofile(modpath.."/crafting.lua")
 
