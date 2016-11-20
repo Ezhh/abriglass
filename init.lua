@@ -36,7 +36,7 @@ for i in ipairs(plain_colors) do
 	minetest.debug("i="..i..", name="..name..", desc="..description);
 
 	minetest.register_node("abriglass:"..nodesuffix, {
-		description = "Green Glass Light",
+		description = description, 
 		tiles = { "abriglass_light"..name..".png"},
 		groups = {cracky = 3},
 		use_texture_alpha = true,
