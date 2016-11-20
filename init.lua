@@ -6,6 +6,9 @@ Who did it: Shara RedCat.
 ]]
 
 
+local is_darklands = true
+
+
 --boring glass because why not?
 
 minetest.register_node("abriglass:clear_glass", {
@@ -19,52 +22,55 @@ minetest.register_node("abriglass:clear_glass", {
 	sounds = default.node_sound_glass_defaults(),
 })
 
+minetest.register_craft({
+	output = 'abriglass:clear_glass 4', -- intentional lower yield
+	recipe = {
+		{'default:glass', '', 'default:glass' },
+		{'', 'default:glass', '' },
+		{'default:glass', '', 'default:glass' },
+	}
+})
 
+
+local plain_colors = {
+	"green", "blue", "red", "yellow",
+}
 --glass lights
 
-minetest.register_node("abriglass:glass_light_green", {
-	description = "Green Glass Light",
-	tiles = {"abriglass_lightgreen.png"},
-	groups = {cracky = 3},
-	use_texture_alpha = true,
-	sunlight_propagates = true,
-	light_source = 14,
-	drawtype = "glasslike",
-	sounds = default.node_sound_glass_defaults(),
-})
+local i
+for i in ipairs(plain_colors) do
+	local name = plain_colors[i]
+	local description = name:sub(1,1):upper()..name:sub(2).." Glass Light"
 
-minetest.register_node("abriglass:glass_light_blue", {
-	description = "Blue Glass Light",
-	tiles = {"abriglass_lightblue.png"},
-	groups = {cracky = 3},
-	use_texture_alpha = true,
-	sunlight_propagates = true,
-	light_source = 14,
-	drawtype = "glasslike",
-	sounds = default.node_sound_glass_defaults(),
-})
+	local nodesuffix = 'glass_light_'..name
 
-minetest.register_node("abriglass:glass_light_red", {
-	description = "Red Glass Light",
-	tiles = {"abriglass_lightred.png"},
-	groups = {cracky = 3},
-	use_texture_alpha = true,
-	sunlight_propagates = true,
-	light_source = 14,
-	drawtype = "glasslike",
-	sounds = default.node_sound_glass_defaults(),
-})
+	minetest.debug("i="..i..", name="..name..", desc="..description);
 
-minetest.register_node("abriglass:glass_light_yellow", {
-	description = "Yellow Glass Light",
-	tiles = {"abriglass_lightyellow.png"},
-	groups = {cracky = 3},
-	use_texture_alpha = true,
-	sunlight_propagates = true,
-	light_source = 14,
-	drawtype = "glasslike",
-	sounds = default.node_sound_glass_defaults(),
-})
+	minetest.register_node("abriglass:"..nodesuffix, {
+		description = "Green Glass Light",
+		tiles = { "abriglass_light"..name..".png"},
+		groups = {cracky = 3},
+		use_texture_alpha = true,
+		sunlight_propagates = true,
+		light_source = (is_darklands and 14 or 4),
+		drawtype = "glasslike",
+		sounds = default.node_sound_glass_defaults(),
+	})
+
+	minetest.register_craft({
+		output = 'abriglass:'..nodesuffix..' 4',
+		recipe = {
+			{'abriglass:clear_glass', 'default:torch', 'abriglass:clear_glass' },
+			{'abriglass:clear_glass', 'dye:'..name, 'abriglass:clear_glass' },
+		}
+	})
+
+	minetest.register_craft({
+		type = "cooking",
+		recipe = "abriglass:"..nodesuffix,
+		output = "abriglass:clear_glass",
+	})
+end
 
 --crystal, for later use in crafting recipes
 
@@ -75,7 +81,7 @@ minetest.register_node("abriglass:ghost_crystal", {
 	groups = {cracky = 3},
 	use_texture_alpha = true,
 	sunlight_propagates = true,
-	light_source = 14,
+	light_source = (is_darklands and 14 or 4),
 	drawtype = "glasslike",
 	sounds = default.node_sound_glass_defaults(),
 })
@@ -103,7 +109,7 @@ for i in ipairs(pattern_list) do
 		groups = {cracky = 3},
 		use_texture_alpha = true,
 		sunlight_propagates = true,
-		light_source = 5,
+		light_source = (is_darklands and 5 or 4),
 		drawtype = "glasslike",
 		paramtype2 = "facedir",
 		sounds = default.node_sound_glass_defaults(),
@@ -185,7 +191,7 @@ minetest.register_node("abriglass:hidden_light", {
 	use_texture_alpha = true,
 	sunlight_propagates = true,
 	walkable = false,
-	light_source = 7,
+	light_source = (is_darklands and 7 or 4), -- not sure about this one
 	drawtype = "glasslike",
 })
 
