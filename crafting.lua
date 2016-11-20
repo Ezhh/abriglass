@@ -34,3 +34,74 @@ for i in ipairs(plain_colors) do
 	})
 end
 
+minetest.register_craft({
+	output = 'abriglass:stainedglass_pattern01 9',
+	recipe = {
+		{'abriglass:glass_light_yellow', 'abriglass:glass_light_yellow', 'abriglass:glass_light_yellow' },
+		{'abriglass:glass_light_yellow', 'abriglass:glass_light_blue', 'abriglass:glass_light_yellow' },
+		{'abriglass:glass_light_yellow', 'abriglass:glass_light_yellow', 'abriglass:glass_light_yellow' },
+	}
+})
+
+
+minetest.register_craft({
+	output = 'abriglass:stainedglass_pattern04 9',
+	recipe = {
+		{'abriglass:glass_light_green', 'abriglass:glass_light_red', 'abriglass:glass_light_green' },
+		{'abriglass:glass_light_red', 'abriglass:glass_light_blue', 'abriglass:glass_light_red' },
+		{'abriglass:glass_light_green', 'abriglass:glass_light_red', 'abriglass:glass_light_green' },
+	}
+})
+
+minetest.register_craft({
+	output = 'abriglass:stainedglass_pattern05 9',
+	recipe = {
+		{'abriglass:glass_light_blue', 'abriglass:glass_light_blue', 'abriglass:glass_light_blue' },
+		{'abriglass:glass_light_blue', 'abriglass:glass_light_green', 'abriglass:glass_light_blue' },
+		{'abriglass:glass_light_blue', 'abriglass:glass_light_blue', 'abriglass:glass_light_blue' },
+	}
+})
+
+minetest.register_craft({
+	type = "cooking",
+	recipe = "abriglass:stainedglass_pattern01",
+	output = "abriglass:clear_glass",
+})
+
+minetest.register_craft({
+	type = "cooking",
+	recipe = "abriglass:stainedglass_pattern02",
+	output = "abriglass:clear_glass",
+})
+
+minetest.register_craft({
+	type = "cooking",
+	recipe = "abriglass:stainedglass_pattern03",
+	output = "abriglass:clear_glass",
+})
+
+minetest.register_craft({
+	type = "cooking",
+	recipe = "abriglass:stainedglass_pattern04",
+	output = "abriglass:clear_glass",
+})
+
+minetest.register_craft({
+	type = "cooking",
+	recipe = "abriglass:stainedglass_pattern05",
+	output = "abriglass:clear_glass",
+})
+
+-- missing crafts for:
+-- ghost_crystal
+-- stainedglass_tiles_dark, stainedglass_tiles_pale,
+-- stainedglass_pattern02,
+-- stainedglass_pattern03, 
+-- oneway_glass_dark
+-- oneway_glass_pale
+-- oneway_wall_dark
+-- oneway_wall_pale
+-- hidden_light
+
+-- and missing also recipes for undecorated glass..
+-- likelly ones without torches in recipe, just glass and dye
