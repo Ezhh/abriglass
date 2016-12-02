@@ -1,13 +1,43 @@
 
+-- undecorated coloured glass, all using plain glass texture
+local glass_list = {
+	{"black", "Darkened", "292421", }, {"blue", "Blue", "0000FF", },
+	{"cyan", "Cyan", "00FFFF", }, {"green", "Green", "00FF00", }, 
+	{"magenta", "Magenta", "FF00FF", }, {"orange", "Orange", "FF6103", }, 
+	{"purple", "Purple", "800080", }, {"red", "Red", "FF0000", }, 
+	{"yellow", "Yellow", "FFFF00", },
+}
 
---[[
-What it is: Simple mod for extra glass, including plain and patterned stained glass, and one way glass.
-Who did it: Shara RedCat.
-]]
+for i in ipairs(glass_list) do
+	local name = glass_list[i][1]
+	local description = glass_list[i][2]
+	local colour = glass_list[i][3]
+
+	minetest.register_node("abriglass:stained_glass_"..name, {
+		description = description.." Glass",
+		tiles = {"abriglass_plainglass.png^[colorize:#"..colour..":122"},
+		groups = {cracky = 3},
+		use_texture_alpha = true,
+		sunlight_propagates = true,
+		light_source = 4,
+		drawtype = "glasslike",
+		sounds = default.node_sound_glass_defaults(),
+	})
+end
+
+minetest.register_node("abriglass:stained_glass_frosted", {
+	description = "Frosted Glass",
+	tiles = {"abriglass_plainglass.png"}, --base texture
+	groups = {cracky = 3},
+	use_texture_alpha = true,
+	sunlight_propagates = true,
+	light_source = 4,
+	drawtype = "glasslike",
+	sounds = default.node_sound_glass_defaults(),
+})
 
 
---boring glass because why not?
-
+-- boring glass because why not?
 minetest.register_node("abriglass:clear_glass", {
 	description = "Clear Glass",
 	tiles = {"abriglass_clearglass.png"},
@@ -20,68 +50,33 @@ minetest.register_node("abriglass:clear_glass", {
 })
 
 
---glass lights
+-- glass lights
+local light_list = {
+	{"glass_light_green", "Green", "lightgreen",},
+	{"glass_light_blue", "Blue", "lightblue",},
+	{"glass_light_red", "Red", "lightred",},
+	{"glass_light_yellow", "Yellow", "lightyellow",},
+}
 
-minetest.register_node("abriglass:glass_light_green", {
-	description = "Green Glass Light",
-	tiles = {"abriglass_lightgreen.png"},
-	groups = {cracky = 3},
-	use_texture_alpha = true,
-	sunlight_propagates = true,
-	light_source = 14,
-	drawtype = "glasslike",
-	sounds = default.node_sound_glass_defaults(),
-})
+for i in ipairs(light_list) do
+	local name = light_list[i][1]
+	local description = light_list[i][2]
+	local image = light_list[i][3]
 
-minetest.register_node("abriglass:glass_light_blue", {
-	description = "Blue Glass Light",
-	tiles = {"abriglass_lightblue.png"},
-	groups = {cracky = 3},
-	use_texture_alpha = true,
-	sunlight_propagates = true,
-	light_source = 14,
-	drawtype = "glasslike",
-	sounds = default.node_sound_glass_defaults(),
-})
+	minetest.register_node("abriglass:" ..name, {
+		description = description.. "Glass Light",
+		tiles = {"abriglass_" ..image.. ".png"},
+		groups = {cracky = 3},
+		use_texture_alpha = true,
+		sunlight_propagates = true,
+		light_source = 14,
+		drawtype = "glasslike",
+		sounds = default.node_sound_glass_defaults(),
+	})
+end
 
-minetest.register_node("abriglass:glass_light_red", {
-	description = "Red Glass Light",
-	tiles = {"abriglass_lightred.png"},
-	groups = {cracky = 3},
-	use_texture_alpha = true,
-	sunlight_propagates = true,
-	light_source = 14,
-	drawtype = "glasslike",
-	sounds = default.node_sound_glass_defaults(),
-})
 
-minetest.register_node("abriglass:glass_light_yellow", {
-	description = "Yellow Glass Light",
-	tiles = {"abriglass_lightyellow.png"},
-	groups = {cracky = 3},
-	use_texture_alpha = true,
-	sunlight_propagates = true,
-	light_source = 14,
-	drawtype = "glasslike",
-	sounds = default.node_sound_glass_defaults(),
-})
-
---crystal, for later use in crafting recipes
-
-minetest.register_node("abriglass:ghost_crystal", {
-	description = "Ghost Crystal",
-	tiles = {"abriglass_ghost_crystal.png"},
-	wield_image = "abriglass_ghost_crystal_wield.png",
-	groups = {cracky = 3},
-	use_texture_alpha = true,
-	sunlight_propagates = true,
-	light_source = 14,
-	drawtype = "glasslike",
-	sounds = default.node_sound_glass_defaults(),
-})
-
---patterned glass
-
+-- patterned glass
 local pattern_list = {   --{name, description, image}
 	{"stainedglass_tiles_dark", "Stained Glass", "stainedglass_tiles1",},
 	{"stainedglass_tiles_pale", "Stained Glass", "stainedglass_tiles2",},
@@ -110,8 +105,8 @@ for i in ipairs(pattern_list) do
 	})
 end
 
---one-way glass
 
+-- one-way glass
 minetest.register_node("abriglass:oneway_glass_dark", {
 	description = "Dark One-Way Glass",
 	drawtype = "nodebox",
@@ -159,8 +154,7 @@ minetest.register_node("abriglass:oneway_glass_pale", {
 })
 
 
---normal blocks to match one-way glass
-
+-- normal nodes to match one-way glass
 minetest.register_node("abriglass:oneway_wall_dark", {
 	description = "Dark Block",
 	tiles = {"abriglass_oneway_wall.png"},
@@ -175,9 +169,20 @@ minetest.register_node("abriglass:oneway_wall_pale", {
 	paramtype2 = "facedir",
 })
 
+-- crystal, for later use in crafting recipes
+minetest.register_node("abriglass:ghost_crystal", {
+	description = "Ghost Crystal",
+	tiles = {"abriglass_ghost_crystal.png"},
+	wield_image = "abriglass_ghost_crystal_wield.png",
+	groups = {cracky = 3},
+	use_texture_alpha = true,
+	sunlight_propagates = true,
+	light_source = 14,
+	drawtype = "glasslike",
+	sounds = default.node_sound_glass_defaults(),
+})
 
---light node
-
+-- hidden light node
 minetest.register_node("abriglass:hidden_light", {
 	description = "Hidden Light",
 	tiles = {"abriglass_oneway_plain_glass.png"}, 
@@ -189,43 +194,5 @@ minetest.register_node("abriglass:hidden_light", {
 	drawtype = "glasslike",
 })
 
-
---undecorated coloured glass, all using plain glass texture
-
-local glass_list = {   --{name, description, colour}
-	{"black", "Darkened", "292421", }, {"blue", "Blue", "0000FF", },
-	{"cyan", "Cyan", "00FFFF", }, {"green", "Green", "00FF00", }, 
-	{"magenta", "Magenta", "FF00FF", }, {"orange", "Orange", "FF6103", }, 
-	{"purple", "Purple", "800080", }, {"red", "Red", "FF0000", }, 
-	{"yellow", "Yellow", "FFFF00", },
-}
-
-for i in ipairs(glass_list) do
-	local name = glass_list[i][1]
-	local description = glass_list[i][2]
-	local colour = glass_list[i][3]
-
-	minetest.register_node("abriglass:stained_glass_"..name, {
-		description = description.." Glass",
-		tiles = {"abriglass_plainglass.png^[colorize:#"..colour..":122"},
-		groups = {cracky = 3},
-		use_texture_alpha = true,
-		sunlight_propagates = true,
-		light_source = 4,
-		drawtype = "glasslike",
-		sounds = default.node_sound_glass_defaults(),
-	})
-end
-
-minetest.register_node("abriglass:stained_glass_frosted", {
-	description = "Frosted Glass",
-	tiles = {"abriglass_plainglass.png"}, --base texture
-	groups = {cracky = 3},
-	use_texture_alpha = true,
-	sunlight_propagates = true,
-	light_source = 4,
-	drawtype = "glasslike",
-	sounds = default.node_sound_glass_defaults(),
-})
 
 
