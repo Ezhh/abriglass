@@ -188,3 +188,8 @@ minetest.register_node("abriglass:hidden_light", {
 	light_source = 7,
 	drawtype = "glasslike",
 })
+
+
+local modpath = minetest.get_modpath(minetest.get_current_modname())
+dofile(modpath.."/crafting.lua")
+ 
