@@ -34,6 +34,37 @@ for i in ipairs(plain_colors) do
 	})
 end
 
+-- this has to be kept in sync with init.lua one
+local glass_list = {
+	"black", "blue", "cyan", "green", "magenta",
+	"orange", "purple", "red", "yellow", 
+}
+
+for i in ipairs(glass_list) do
+	local name = glass_list[i]
+	minetest.register_craft({
+		output = 'abriglass:stained_glass_'..name..' 2',
+		recipe = {
+			{'abriglass:clear_glass', 'dye:'..name, 'abriglass:clear_glass' },
+		}
+	})
+
+	minetest.register_craft({
+		type = "cooking",
+		recipe = "abriglass:stained_glass_"..name,
+		output = "abriglass:clear_glass",
+	})
+end
+
+minetest.register_craft({
+	output = 'abriglass:stained_glass_frosted 6',
+	recipe = {
+		{'abriglass:clear_glass', '', 'abriglass:clear_glass' },
+		{'abriglass:clear_glass', 'dye:white', 'abriglass:clear_glass' },
+		{'abriglass:clear_glass', '', 'abriglass:clear_glass' },
+	}
+})
+
 minetest.register_craft({
 	output = 'abriglass:stainedglass_pattern01 9',
 	recipe = {
@@ -43,6 +74,23 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+	output = 'abriglass:stainedglass_pattern02 9',
+	recipe = {
+		{'abriglass:clear_glass', 'abriglass:clear_glass', 'abriglass:clear_glass' },
+		{'abriglass:clear_glass', 'abriglass:clear_glass', 'abriglass:clear_glass' },
+		{'abriglass:clear_glass', 'abriglass:clear_glass', 'abriglass:clear_glass' },
+	}
+})
+
+minetest.register_craft({
+	output = 'abriglass:stainedglass_pattern03 9',
+	recipe = {
+		{'abriglass:glass_light_red', 'abriglass:clear_glass', 'abriglass:glass_light_red' },
+		{'abriglass:clear_glass', 'abriglass:clear_glass', 'abriglass:clear_glass' },
+		{'abriglass:glass_light_red', 'abriglass:clear_glass', 'abriglass:glass_light_red' },
+	}
+})
 
 minetest.register_craft({
 	output = 'abriglass:stainedglass_pattern04 9',
@@ -92,16 +140,17 @@ minetest.register_craft({
 	output = "abriglass:clear_glass",
 })
 
+minetest.register_craft({
+	type = "cooking",
+	recipe = "abriglass:stained_glass_frosted",
+	output = "abriglass:clear_glass",
+})
+
 -- missing crafts for:
 -- ghost_crystal
 -- stainedglass_tiles_dark, stainedglass_tiles_pale,
--- stainedglass_pattern02,
--- stainedglass_pattern03, 
 -- oneway_glass_dark
 -- oneway_glass_pale
 -- oneway_wall_dark
 -- oneway_wall_pale
--- hidden_light
-
--- and missing also recipes for undecorated glass..
--- likelly ones without torches in recipe, just glass and dye
+-- 2 more oneways
