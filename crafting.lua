@@ -37,7 +37,6 @@ end
 
 
 -- undecorated coloured glass recipes
--- this has to be kept in sync with init.lua one
 local dye_list = {
 	{"black", "black",}, 
 	{"blue", "blue",},
@@ -48,15 +47,18 @@ local dye_list = {
 	{"purple", "violet",},
 	{"red", "red",},
 	{"yellow", "yellow",}, 
+	{"frosted", "white",},
 }
 
 for i in ipairs(dye_list) do
 	local name = dye_list[i][1]
 	local dye = dye_list[i][2]
 	minetest.register_craft({
-		output = 'abriglass:stained_glass_'..name..' 2',
+		output = 'abriglass:stained_glass_'..name..' 6',
 		recipe = {
+			{'abriglass:clear_glass', '', 'abriglass:clear_glass' },
 			{'abriglass:clear_glass', 'dye:'..dye, 'abriglass:clear_glass' },
+			{'abriglass:clear_glass', '', 'abriglass:clear_glass' },
 		}
 	})
 
@@ -66,15 +68,6 @@ for i in ipairs(dye_list) do
 		output = "abriglass:clear_glass",
 	})
 end
-
-minetest.register_craft({
-	output = 'abriglass:stained_glass_frosted 6',
-	recipe = {
-		{'abriglass:clear_glass', '', 'abriglass:clear_glass' },
-		{'abriglass:clear_glass', 'dye:white', 'abriglass:clear_glass' },
-		{'abriglass:clear_glass', '', 'abriglass:clear_glass' },
-	}
-})
 
 
 -- patterned glass recipes
@@ -168,12 +161,6 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "cooking",
 	recipe = "abriglass:stainedglass_pattern05",
-	output = "abriglass:clear_glass",
-})
-
-minetest.register_craft({
-	type = "cooking",
-	recipe = "abriglass:stained_glass_frosted",
 	output = "abriglass:clear_glass",
 })
 
