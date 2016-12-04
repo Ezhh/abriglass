@@ -198,8 +198,25 @@ for i in ipairs(oneway_recipe_list) do
 	})
 end
 
+minetest.register_craft({
+	output = 'abriglass:oneway_wall_dark 2',
+	recipe = {
+		{'default:clay_lump', 'default:clay_lump', 'default:clay_lump'},
+		{'default:clay_lump', 'dye:black', 'default:clay_lump'},
+		{'default:clay_lump', 'default:clay_lump', 'default:clay_lump'},
+	}
+})
+
+minetest.register_craft({
+	output = 'abriglass:oneway_wall_pale 2',
+	recipe = {
+		{'default:clay_lump', 'default:clay_lump', 'default:clay_lump'},
+		{'default:clay_lump', 'dye:white', 'default:clay_lump'},
+		{'default:clay_lump', 'default:clay_lump', 'default:clay_lump'},
+	}
+})
+
+
 
 -- missing crafts for:
 -- ghost_crystal
--- oneway_wall_dark
--- oneway_wall_pale
