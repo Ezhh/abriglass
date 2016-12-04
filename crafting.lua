@@ -53,6 +53,7 @@ local dye_list = {
 for i in ipairs(dye_list) do
 	local name = dye_list[i][1]
 	local dye = dye_list[i][2]
+
 	minetest.register_craft({
 		output = 'abriglass:stained_glass_'..name..' 6',
 		recipe = {
@@ -178,24 +179,27 @@ minetest.register_craft({
 
 
 -- one-way recipes
-minetest.register_craft({
-	output = 'abriglass:oneway_glass_desert_brick 2',
-	recipe = {
-		{'abriglass:clear_glass', 'default:mese_crystal_fragment', 'default:desert_stonebrick' },
-	}
-})
+local oneway_recipe_list = {
+	{"abriglass:oneway_glass_desert_brick", "default:desert_stonebrick",},
+	{"abriglass:oneway_glass_stone_brick", "default:stonebrick",},
+	{"abriglass:oneway_glass_dark", "abriglass:oneway_wall_dark",},
+	{"abriglass:oneway_glass_pale", "abriglass:oneway_wall_pale",},
+}
 
-minetest.register_craft({
-	output = 'abriglass:oneway_glass_stone_brick 2',
-	recipe = {
-		{'abriglass:clear_glass', 'default:mese_crystal_fragment', 'default:stonebrick' },
-	}
-})
+for i in ipairs(oneway_recipe_list) do
+	local name = oneway_recipe_list[i][1]
+	local ingredient = oneway_recipe_list[i][2]
+
+	minetest.register_craft({
+		output = name.." 2",
+		recipe = {
+			{'abriglass:clear_glass', 'default:mese_crystal_fragment', ingredient },
+		}
+	})
+end
 
 
 -- missing crafts for:
 -- ghost_crystal
--- oneway_glass_dark
--- oneway_glass_pale
 -- oneway_wall_dark
 -- oneway_wall_pale
