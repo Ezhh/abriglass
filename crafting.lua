@@ -111,6 +111,25 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = 'abriglass:stainedglass_tiles_dark 7',
+	recipe = {
+		{'abriglass:stained_glass_red', 'abriglass:stained_glass_green', 'abriglass:stained_glass_blue' },
+		{'abriglass:stained_glass_yellow', 'abriglass:stained_glass_magenta', 'abriglass:stained_glass_cyan' },
+		{'', 'abriglass:stained_glass_black', '' },
+	}
+})
+
+minetest.register_craft({
+	output = 'abriglass:stainedglass_tiles_pale 7',
+	recipe = {
+		{'abriglass:stained_glass_red', 'abriglass:stained_glass_green', 'abriglass:stained_glass_blue' },
+		{'abriglass:stained_glass_yellow', 'abriglass:stained_glass_magenta', 'abriglass:stained_glass_cyan' },
+		{'', 'abriglass:stained_glass_frosted', '' },
+	}
+})
+
+
+minetest.register_craft({
 	type = "cooking",
 	recipe = "abriglass:stainedglass_pattern01",
 	output = "abriglass:clear_glass",
@@ -146,11 +165,35 @@ minetest.register_craft({
 	output = "abriglass:clear_glass",
 })
 
+minetest.register_craft({
+	type = "cooking",
+	recipe = "abriglass:stainedglass_tiles_dark",
+	output = "abriglass:clear_glass",
+})
+
+minetest.register_craft({
+	type = "cooking",
+	recipe = "abriglass:stainedglass_tiles_pale",
+	output = "abriglass:clear_glass",
+})
+
+minetest.register_craft({
+	output = 'abriglass:oneway_glass_desert_brick 2',
+	recipe = {
+		{'abriglass:clear_glass', 'default:mese_crystal_fragment', 'default:desert_stonebrick' },
+	}
+})
+
+minetest.register_craft({
+	output = 'abriglass:oneway_glass_stone_brick 2',
+	recipe = {
+		{'abriglass:clear_glass', 'default:mese_crystal_fragment', 'default:stonebrick' },
+	}
+})
+
 -- missing crafts for:
 -- ghost_crystal
--- stainedglass_tiles_dark, stainedglass_tiles_pale,
 -- oneway_glass_dark
 -- oneway_glass_pale
 -- oneway_wall_dark
 -- oneway_wall_pale
--- 2 more oneways
