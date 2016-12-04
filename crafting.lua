@@ -1,4 +1,5 @@
 
+-- clear glass recipe
 minetest.register_craft({
 	output = 'abriglass:clear_glass 4', -- intentional lower yield
 	recipe = {
@@ -9,10 +10,10 @@ minetest.register_craft({
 })
 
 
+-- glass light recipes
 local plain_colors = {
 	"green", "blue", "red", "yellow",
 }
---glass lights
 
 local i
 for i in ipairs(plain_colors) do
@@ -34,6 +35,8 @@ for i in ipairs(plain_colors) do
 	})
 end
 
+
+-- undecorated coloured glass recipes
 -- this has to be kept in sync with init.lua one
 local glass_list = {
 	"black", "blue", "cyan", "green", "magenta",
@@ -65,6 +68,8 @@ minetest.register_craft({
 	}
 })
 
+
+-- patterned glass recipes
 minetest.register_craft({
 	output = 'abriglass:stainedglass_pattern01 9',
 	recipe = {
@@ -128,7 +133,6 @@ minetest.register_craft({
 	}
 })
 
-
 minetest.register_craft({
 	type = "cooking",
 	recipe = "abriglass:stainedglass_pattern01",
@@ -177,6 +181,8 @@ minetest.register_craft({
 	output = "abriglass:clear_glass",
 })
 
+
+-- one-way recipes
 minetest.register_craft({
 	output = 'abriglass:oneway_glass_desert_brick 2',
 	recipe = {
@@ -190,6 +196,7 @@ minetest.register_craft({
 		{'abriglass:clear_glass', 'default:mese_crystal_fragment', 'default:stonebrick' },
 	}
 })
+
 
 -- missing crafts for:
 -- ghost_crystal
