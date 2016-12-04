@@ -38,17 +38,25 @@ end
 
 -- undecorated coloured glass recipes
 -- this has to be kept in sync with init.lua one
-local glass_list = {
-	"black", "blue", "cyan", "green", "magenta",
-	"orange", "purple", "red", "yellow", 
+local dye_list = {
+	{"black", "black",}, 
+	{"blue", "blue",},
+	{"cyan", "cyan",},
+	{"green", "green",},
+	{"magenta", "magenta",},
+	{"orange", "orange",},
+	{"purple", "violet",},
+	{"red", "red",},
+	{"yellow", "yellow",}, 
 }
 
-for i in ipairs(glass_list) do
-	local name = glass_list[i]
+for i in ipairs(dye_list) do
+	local name = dye_list[i][1]
+	local dye = dye_list[i][2]
 	minetest.register_craft({
 		output = 'abriglass:stained_glass_'..name..' 2',
 		recipe = {
-			{'abriglass:clear_glass', 'dye:'..name, 'abriglass:clear_glass' },
+			{'abriglass:clear_glass', 'dye:'..dye, 'abriglass:clear_glass' },
 		}
 	})
 
