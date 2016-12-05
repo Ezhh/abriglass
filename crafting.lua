@@ -75,9 +75,9 @@ end
 minetest.register_craft({
 	output = 'abriglass:stainedglass_pattern01 9',
 	recipe = {
-		{'abriglass:glass_light_yellow', 'abriglass:glass_light_yellow', 'abriglass:glass_light_yellow' },
-		{'abriglass:glass_light_yellow', 'abriglass:glass_light_blue', 'abriglass:glass_light_yellow' },
-		{'abriglass:glass_light_yellow', 'abriglass:glass_light_yellow', 'abriglass:glass_light_yellow' },
+		{'abriglass:stained_glass_yellow', 'abriglass:stained_glass_yellow', 'abriglass:stained_glass_yellow' },
+		{'abriglass:stained_glass_yellow', 'abriglass:stained_glass_blue', 'abriglass:stained_glass_yellow' },
+		{'abriglass:stained_glass_yellow', 'abriglass:stained_glass_yellow', 'abriglass:stained_glass_yellow' },
 	}
 })
 
@@ -93,27 +93,27 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'abriglass:stainedglass_pattern03 9',
 	recipe = {
-		{'abriglass:glass_light_red', 'abriglass:clear_glass', 'abriglass:glass_light_red' },
+		{'abriglass:stained_glass_red', 'abriglass:clear_glass', 'abriglass:stained_glass_red' },
 		{'abriglass:clear_glass', 'abriglass:clear_glass', 'abriglass:clear_glass' },
-		{'abriglass:glass_light_red', 'abriglass:clear_glass', 'abriglass:glass_light_red' },
+		{'abriglass:stained_glass_red', 'abriglass:clear_glass', 'abriglass:stained_glass_red' },
 	}
 })
 
 minetest.register_craft({
 	output = 'abriglass:stainedglass_pattern04 9',
 	recipe = {
-		{'abriglass:glass_light_green', 'abriglass:glass_light_red', 'abriglass:glass_light_green' },
-		{'abriglass:glass_light_red', 'abriglass:glass_light_blue', 'abriglass:glass_light_red' },
-		{'abriglass:glass_light_green', 'abriglass:glass_light_red', 'abriglass:glass_light_green' },
+		{'abriglass:stained_glass_green', 'abriglass:stained_glass_red', 'abriglass:stained_glass_green' },
+		{'abriglass:stained_glass_red', 'abriglass:stained_glass_blue', 'abriglass:stained_glass_red' },
+		{'abriglass:stained_glass_green', 'abriglass:stained_glass_red', 'abriglass:stained_glass_green' },
 	}
 })
 
 minetest.register_craft({
 	output = 'abriglass:stainedglass_pattern05 9',
 	recipe = {
-		{'abriglass:glass_light_blue', 'abriglass:glass_light_blue', 'abriglass:glass_light_blue' },
-		{'abriglass:glass_light_blue', 'abriglass:glass_light_green', 'abriglass:glass_light_blue' },
-		{'abriglass:glass_light_blue', 'abriglass:glass_light_blue', 'abriglass:glass_light_blue' },
+		{'abriglass:stained_glass_blue', 'abriglass:stained_glass_blue', 'abriglass:stained_glass_blue' },
+		{'abriglass:stained_glass_blue', 'abriglass:stained_glass_green', 'abriglass:stained_glass_blue' },
+		{'abriglass:stained_glass_blue', 'abriglass:stained_glass_blue', 'abriglass:stained_glass_blue' },
 	}
 })
 
