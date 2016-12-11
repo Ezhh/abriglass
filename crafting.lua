@@ -135,47 +135,19 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
-	type = "cooking",
-	recipe = "abriglass:stainedglass_pattern01",
-	output = "abriglass:clear_glass",
-})
 
-minetest.register_craft({
-	type = "cooking",
-	recipe = "abriglass:stainedglass_pattern02",
-	output = "abriglass:clear_glass",
-})
+-- cooking recipes
+local cook_list = { "stainedglass_pattern01", "stainedglass_pattern02", "stainedglass_pattern03", "stainedglass_pattern04", "stainedglass_pattern05", "stainedglass_tiles_dark", "stainedglass_tiles_pale"}
 
-minetest.register_craft({
-	type = "cooking",
-	recipe = "abriglass:stainedglass_pattern03",
-	output = "abriglass:clear_glass",
-})
+for i = 1, #cook_list do
+	local name = cook_list[i]
 
-minetest.register_craft({
-	type = "cooking",
-	recipe = "abriglass:stainedglass_pattern04",
-	output = "abriglass:clear_glass",
-})
-
-minetest.register_craft({
-	type = "cooking",
-	recipe = "abriglass:stainedglass_pattern05",
-	output = "abriglass:clear_glass",
-})
-
-minetest.register_craft({
-	type = "cooking",
-	recipe = "abriglass:stainedglass_tiles_dark",
-	output = "abriglass:clear_glass",
-})
-
-minetest.register_craft({
-	type = "cooking",
-	recipe = "abriglass:stainedglass_tiles_pale",
-	output = "abriglass:clear_glass",
-})
+	minetest.register_craft({
+		type = "cooking",
+		recipe = "abriglass:"..name,
+		output = "abriglass:clear_glass",
+	})
+end
 
 
 -- one-way recipes
@@ -216,7 +188,3 @@ minetest.register_craft({
 	}
 })
 
-
-
--- missing crafts for:
--- ghost_crystal
