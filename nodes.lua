@@ -112,6 +112,7 @@ local oneway_list = {
 	{"pale", "White", "oneway_plain_glass", "oneway_face.png^[colorize:#F8F8FF:200", "abriglass_oneway_wall.png^[colorize:#E6E6FA:200",},
 	{"desert_brick", "Desert Brick", "oneway_plain_glass", "oneway_face.png^[colorize:#814F3C:200", "default_desert_stone_brick.png",},
 	{"stone_brick", "Stone Brick", "oneway_plain_glass", "oneway_face.png^[colorize:#615E5D:200", "default_stone_brick.png",},
+	{"sandstone_brick", "Sandstone Brick", "oneway_plain_glass", "oneway_face.png^[colorize:#FFF9C5:200", "default_sandstone_brick.png",},
 }
 
 for i in ipairs(oneway_list) do
