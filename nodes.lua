@@ -108,11 +108,11 @@ end
 
 -- one-way glass
 local oneway_list = {
-	{"dark", "Dark", "oneway_plain_glass", "oneway_face.png", "abriglass_oneway_wall.png",},
-	{"pale", "White", "oneway_plain_glass", "oneway_face.png^[colorize:#F8F8FF:200", "abriglass_oneway_wall.png^[colorize:#E6E6FA:200",},
-	{"desert_brick", "Desert Brick", "oneway_plain_glass", "oneway_face.png^[colorize:#814F3C:200", "default_desert_stone_brick.png",},
-	{"stone_brick", "Stone Brick", "oneway_plain_glass", "oneway_face.png^[colorize:#615E5D:200", "default_stone_brick.png",},
-	{"sandstone_brick", "Sandstone Brick", "oneway_plain_glass", "oneway_face.png^[colorize:#FFF9C5:200", "default_sandstone_brick.png",},
+	{"dark", "Dark", "oneway_face.png", "abriglass_oneway_wall.png",},
+	{"pale", "White", "oneway_face.png^[colorize:#F8F8FF:200", "abriglass_oneway_wall.png^[colorize:#E6E6FA:200",},
+	{"desert_brick", "Desert Brick", "oneway_face.png^[colorize:#814F3C:200", "default_desert_stone_brick.png",},
+	{"stone_brick", "Stone Brick", "oneway_face.png^[colorize:#615E5D:200", "default_stone_brick.png",},
+	{"sandstone_brick", "Sandstone Brick", "oneway_face.png^[colorize:#FFF9C5:200", "default_sandstone_brick.png",},
 }
 
 for i in ipairs(oneway_list) do
@@ -120,7 +120,6 @@ for i in ipairs(oneway_list) do
 	local description = oneway_list[i][2]
 	local image1 = oneway_list[i][3]
 	local image2 = oneway_list[i][4]
-	local image3 = oneway_list[i][5]
 
 	minetest.register_node("abriglass:oneway_glass_"..name, {
 		description = description.." One-Way Glass",
@@ -134,16 +133,16 @@ for i in ipairs(oneway_list) do
 			},
 		},
 		groups = {cracky = 3},
-		tiles = {"abriglass_"..image1..".png", -- up
-				 "abriglass_"..image1..".png", -- down
-				 "abriglass_"..image1..".png", -- right
-				 "abriglass_"..image1..".png", -- left
-				 "abriglass_"..image2, -- back
-				 image3, -- front
+		tiles = {"abriglass_oneway_plain_glass.png", -- up
+				 "abriglass_oneway_plain_glass.png", -- down
+				 "abriglass_oneway_plain_glass.png", -- right
+				 "abriglass_oneway_plain_glass.png", -- left
+				 "abriglass_"..image1, -- back
+				 image2, -- front
 				 }, 
 		is_ground_content = false,
 		sunlight_propagates = true,
-		inventory_image = minetest.inventorycube("abriglass_"..image2)
+		inventory_image = minetest.inventorycube("abriglass_"..image1)
 	})
 end
 
