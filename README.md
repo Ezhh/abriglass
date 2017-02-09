@@ -7,7 +7,8 @@ Stained glass Minetest mod by Shara RedCat which adds:
 2. Patterned stained glass.
 3. Glass lights.
 4. One way windows. 
-5. Hidden light node.
+5. Portholes.
+6. Hidden light node.
 
 
 Crafting

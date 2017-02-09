@@ -106,6 +106,39 @@ for i in ipairs(pattern_list) do
 end
 
 
+-- portholes
+local port_list = {
+	{"wood",}, {"junglewood",},
+}
+
+for i in ipairs(port_list) do
+	local name = port_list[i][1]
+
+	minetest.register_node("abriglass:porthole_"..name, {
+		description = "Porthole",
+		drawtype = "nodebox",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		node_box = {
+			type = "fixed",
+			fixed = {
+				{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+			},
+		},
+		groups = {choppy = 2, flammable = 2, wood = 1},
+		tiles = {"default_"..name.. ".png", -- up
+				 "default_"..name.. ".png", -- down
+				 "default_"..name.. ".png", -- right
+				 "default_"..name.. ".png", -- left
+				 "abriglass_porthole_"..name..".png", -- back
+				 "abriglass_porthole_"..name..".png", -- front
+				 }, 
+		is_ground_content = false,
+		sunlight_propagates = true,
+	})
+end
+
+
 -- one-way glass
 local oneway_list = {
 	{"dark", "Dark", "oneway_face.png", "abriglass_oneway_wall.png",},
