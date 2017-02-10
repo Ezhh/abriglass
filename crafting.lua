@@ -150,6 +150,25 @@ for i = 1, #cook_list do
 end
 
 
+-- porthole recipes
+local port_recipes = {
+	{"wood",}, {"junglewood",},
+}
+
+for i in ipairs(port_recipes) do
+	local name = port_recipes[i][1]
+
+	minetest.register_craft({
+		output = "abriglass:porthole_"..name.." 4",
+		recipe = {
+			{"default:glass", "", "default:glass",},
+			{"default:"..name, "", "default:steel_ingot",},
+			{"default:glass", "", "default:glass",},
+		}
+	})
+end
+
+
 -- one-way recipes
 local oneway_recipe_list = {
 	{"abriglass:oneway_glass_desert_brick", "default:desert_stonebrick",},
