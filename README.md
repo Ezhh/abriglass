@@ -27,9 +27,15 @@ Hidden light is not in the inventory, has no recipes and can only be acquired th
 Special thanks to agaran for assisting with the recipes. 
 
 
-Licenses and Attribution 
+Licenses and Attribution
 -----------------------
 
 Code for this mod is released under MIT (https://opensource.org/licenses/MIT).
 
 Textures for this mod are released under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/), attribution: Shara RedCat.
+
+
+Recommended Additions
+-----------------------
+
+- [abriflame](https://github.com/Ezhh/abriflame) allows coloured flames to be lit on coloured glass nodes.
