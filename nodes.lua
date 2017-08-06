@@ -21,6 +21,7 @@ for i in ipairs(glass_list) do
 		sunlight_propagates = true,
 		light_source = 4,
 		drawtype = "glasslike",
+		paramtype = "light",
 		sounds = default.node_sound_glass_defaults(),
 	})
 end
@@ -33,6 +34,7 @@ minetest.register_node("abriglass:stained_glass_frosted", {
 	sunlight_propagates = true,
 	light_source = 4,
 	drawtype = "glasslike",
+	paramtype = "light",
 	sounds = default.node_sound_glass_defaults(),
 })
 
@@ -71,6 +73,7 @@ for i in ipairs(light_list) do
 		sunlight_propagates = true,
 		light_source = 14,
 		drawtype = "glasslike",
+		paramtype = "light",
 		sounds = default.node_sound_glass_defaults(),
 	})
 end
@@ -100,6 +103,7 @@ for i in ipairs(pattern_list) do
 		sunlight_propagates = true,
 		light_source = 5,
 		drawtype = "glasslike",
+		paramtype = "light",
 		paramtype2 = "facedir",
 		sounds = default.node_sound_glass_defaults(),
 	})
@@ -206,6 +210,7 @@ minetest.register_node("abriglass:ghost_crystal", {
 	sunlight_propagates = true,
 	light_source = 14,
 	drawtype = "glasslike",
+	paramtype = "light",
 	sounds = default.node_sound_glass_defaults(),
 })
 
@@ -220,4 +225,5 @@ minetest.register_node("abriglass:hidden_light", {
 	walkable = false,
 	light_source = 7,
 	drawtype = "glasslike",
+	paramtype = "light",
 })
