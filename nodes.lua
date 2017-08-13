@@ -1,11 +1,11 @@
 
 -- undecorated coloured glass, all using plain glass texture
 local glass_list = {
-	{"black", "Darkened", "292421", }, {"blue", "Blue", "0000FF", },
-	{"cyan", "Cyan", "00FFFF", }, {"green", "Green", "00FF00", }, 
-	{"magenta", "Magenta", "FF00FF", }, {"orange", "Orange", "FF6103", }, 
-	{"purple", "Purple", "800080", }, {"red", "Red", "FF0000", }, 
-	{"yellow", "Yellow", "FFFF00", },
+	{"black", "Darkened", "292421",}, {"blue", "Blue", "0000FF",},
+	{"cyan", "Cyan", "00FFFF",}, {"green", "Green", "00FF00",}, 
+	{"magenta", "Magenta", "FF00FF",}, {"orange", "Orange", "FF6103",}, 
+	{"purple", "Purple", "800080",}, {"red", "Red", "FF0000",}, 
+	{"yellow", "Yellow", "FFFF00",}, {"frosted", "Frosted", "FFFFFF",}
 }
 
 for i in ipairs(glass_list) do
@@ -25,18 +25,6 @@ for i in ipairs(glass_list) do
 		sounds = default.node_sound_glass_defaults(),
 	})
 end
-
-minetest.register_node("abriglass:stained_glass_frosted", {
-	description = "Frosted Glass",
-	tiles = {"abriglass_plainglass.png^[colorize:#FFFFFF:122"}, --base texture
-	groups = {cracky = 3},
-	use_texture_alpha = true,
-	sunlight_propagates = true,
-	light_source = 4,
-	drawtype = "glasslike",
-	paramtype = "light",
-	sounds = default.node_sound_glass_defaults(),
-})
 
 
 -- boring glass because why not?
