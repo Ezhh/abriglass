@@ -28,7 +28,7 @@ end
 
 minetest.register_node("abriglass:stained_glass_frosted", {
 	description = "Frosted Glass",
-	tiles = {"abriglass_plainglass.png"}, --base texture
+	tiles = {"abriglass_plainglass.png^[colorize:#FFFFFF:122"}, --base texture
 	groups = {cracky = 3},
 	use_texture_alpha = true,
 	sunlight_propagates = true,
