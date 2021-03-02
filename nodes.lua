@@ -138,7 +138,15 @@ local oneway_list = {
 	{"desert_brick", "Desert Brick", "oneway_face.png^[colorize:#814F3C:200", "default_desert_stone_brick.png",},
 	{"stone_brick", "Stone Brick", "oneway_face.png^[colorize:#615E5D:200", "default_stone_brick.png",},
 	{"sandstone_brick", "Sandstone Brick", "oneway_face.png^[colorize:#FFF9C5:200", "default_sandstone_brick.png",},
+	{"desert_sandstone_brick", "Desert Sandstone Brick", "oneway_face.png^[colorize:#C5C18F:200", "default_desert_sandstone_brick.png",},
+	{"silver_sandstone_brick", "Silver Sandstone Brick", "oneway_face.png^[colorize:#C3C0B5:200", "default_silver_sandstone_brick.png",},
+	{"obsidianbrick", "Obsidian Brick", "oneway_face.png^[colorize:#131518:200", "default_obsidian_brick.png",},
 }
+
+if minetest.get_modpath("ethereal") then
+	table.insert(oneway_list, {"snowbrick", "Snow Brick", "oneway_face.png^[colorize:#EEEFFF:200", "brick_snow.png" })
+	table.insert(oneway_list, {"icebrick", "Ice Brick", "oneway_face.png^[colorize:#A9BED9:200", "brick_ice.png" })
+end
 
 for i in ipairs(oneway_list) do
 	local name = oneway_list[i][1]
