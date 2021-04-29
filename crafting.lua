@@ -169,24 +169,73 @@ for i in ipairs(port_recipes) do
 end
 
 
--- one-way recipes
+-- one-way one side recipes
 local oneway_recipe_list = {
-	{"abriglass:oneway_glass_desert_brick", "default:desert_stonebrick",},
-	{"abriglass:oneway_glass_stone_brick", "default:stonebrick",},
-	{"abriglass:oneway_glass_sandstone_brick", "default:sandstonebrick",},
-	{"abriglass:oneway_glass_dark", "abriglass:oneway_wall_dark",},
-	{"abriglass:oneway_glass_pale", "abriglass:oneway_wall_pale",},
+	{"desert_brick", "default:desert_stonebrick", "default:desert_stonebrick",},
+	{"stone_brick", "default:stonebrick", "default:stonebrick",},
+	{"sandstone_brick", "default:sandstonebrick", "default:sandstonebrick",},
+    	{"desertstone", "default:desert_stone", "default:desert_stone",},
+	{"stone", "default:stone", "default:stone",},
+	{"sandstone", "default:sandstone", "default:sandstone",},
+    	{"dirt", "default:dirt", "default:dirt",},
+	{"snow", "default:snowblock", "default:snowblock",},
+	{"dirt_grass", "default:grass", "default:dirt",},
+	{"dirt_snow", "default:snow", "default:dirt",},
+	{"desert_sandstone_brick", "default:desert_sandstone_brick", "default:desert_sandstone_brick",},
+	{"silver_sandstone_brick", "default:silver_sandstone_brick", "default:silver_sandstone_brick",},
+	{"obsidian_brick", "default:obsidian", "default:obsidian",},
+        {"dark", "abriglass:oneway_wall_dark", "abriglass:oneway_wall_dark",},
+	{"pale", "abriglass:oneway_wall_pale", "abriglass:oneway_wall_pale",},
 }
+
+if minetest.get_modpath("ethereal") then
+	table.insert(oneway_recipe_list, {"snowbrick", "ethereal:snowbrick", "ethereal:snowbrick", })
+	table.insert(oneway_recipe_list, {"icebrick", "ethereal:icebrick", "ethereal:icebrick", })
+end
 
 for i in ipairs(oneway_recipe_list) do
 	local name = oneway_recipe_list[i][1]
 	local ingredient = oneway_recipe_list[i][2]
-
+        local ingredient2 = oneway_recipe_list[i][3]
+        
 	minetest.register_craft({
-		output = name.." 2",
+		output = "abriglass:oneway_glass_one_"..name.." 2",
 		recipe = {
 			{'abriglass:clear_glass', 'default:mese_crystal_fragment', ingredient },
 		}
+	})
+end
+
+-- one-way two sides recipes
+
+for i in ipairs(oneway_recipe_list) do
+	local name = oneway_recipe_list[i][1]
+	local ingredient = oneway_recipe_list[i][2]
+        local ingredient2 = oneway_recipe_list[i][3]
+
+	minetest.register_craft({
+		output = "abriglass:oneway_glass_two_"..name.." 2",
+		recipe = {
+			{'abriglass:clear_glass', 'default:mese_crystal_fragment', ingredient },
+			{'', '', ingredient2 },
+                }
+	})
+end
+
+-- one-way three sides recipes
+
+for i in ipairs(oneway_recipe_list) do
+	local name = oneway_recipe_list[i][1]
+	local ingredient = oneway_recipe_list[i][2]
+        local ingredient2 = oneway_recipe_list[i][3]
+
+	minetest.register_craft({
+		output = "abriglass:oneway_glass_three_"..name.." 2",
+		recipe = {
+			{'abriglass:clear_glass', 'default:mese_crystal_fragment', ingredient },
+			{'', '', ingredient2 },
+			{'', '', ingredient2 },
+                }
 	})
 end
 

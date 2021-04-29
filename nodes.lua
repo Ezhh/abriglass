@@ -131,23 +131,39 @@ for i in ipairs(port_list) do
 end
 
 
--- one-way glass
+-- one-way one side glass
 local oneway_list = {
-	{"dark", "Dark", "oneway_face.png", "abriglass_oneway_wall.png",},
-	{"pale", "White", "oneway_face.png^[colorize:#F8F8FF:200", "abriglass_oneway_wall.png^[colorize:#E6E6FA:200",},
-	{"desert_brick", "Desert Brick", "oneway_face.png^[colorize:#814F3C:200", "default_desert_stone_brick.png",},
-	{"stone_brick", "Stone Brick", "oneway_face.png^[colorize:#615E5D:200", "default_stone_brick.png",},
-	{"sandstone_brick", "Sandstone Brick", "oneway_face.png^[colorize:#FFF9C5:200", "default_sandstone_brick.png",},
+	{"dark", "Dark", "oneway_face.png", "abriglass_oneway_wall.png", "abriglass_oneway_wall.png",},
+	{"pale", "White", "oneway_face.png^[colorize:#F8F8FF:200", "abriglass_oneway_wall.png^[colorize:#E6E6FA:200", "abriglass_oneway_wall.png^[colorize:#E6E6FA:200",},
+	{"desert_brick", "Desert Brick", "oneway_face.png^[colorize:#814F3C:200", "default_desert_stone_brick.png", "default_desert_stone_brick.png",},
+	{"stone_brick", "Stone Brick", "oneway_face.png^[colorize:#615E5D:200", "default_stone_brick.png", "default_stone_brick.png",},
+	{"sandstone_brick", "Sandstone Brick", "oneway_face.png^[colorize:#FFF9C5:200", "default_sandstone_brick.png", "default_sandstone_brick.png",},
+	{"desertstone", "Desert Stone", "oneway_face.png^[colorize:#814F3C:200", "default_desert_stone.png", "default_desert_stone.png",},
+	{"stone", "Stone", "oneway_face.png^[colorize:#615E5D:200", "default_stone.png", "default_stone.png",},
+	{"sandstone", "Sandstone", "oneway_face.png^[colorize:#FFF9C5:200", "default_sandstone.png","default_sandstone.png", },
+	{"snow", "Snow", "oneway_face.png^[colorize:#B6B7C1:200", "default_snow.png","default_snow.png", },
+    	{"dirt", "Dirt", "oneway_face.png^[colorize:#4C341F:200", "default_dirt.png","default_dirt.png", },
+    	{"dirt_grass", "Dirt with Grass", "oneway_face.png^[colorize:#30470E:200", "default_grass.png","default_dirt.png^default_grass_side.png", },
+    	{"dirt_snow", "Dirt with Snow", "oneway_face.png^[colorize:#B6B7C1:200", "default_snow.png","default_dirt.png^default_snow_side.png", },
+	{"desert_sandstone_brick", "Desert Sandstone Brick", "oneway_face.png^[colorize:#C5C18F:200", "default_desert_sandstone_brick.png","default_desert_sandstone_brick.png", },
+	{"silver_sandstone_brick", "Silver Sandstone Brick", "oneway_face.png^[colorize:#C3C0B5:200", "default_silver_sandstone_brick.png","default_silver_sandstone_brick.png", },
+	{"obsidian_brick", "Obsidian Brick", "oneway_face.png^[colorize:#131518:200", "default_obsidian_brick.png","default_obsidian_brick.png", },
 }
+
+if minetest.get_modpath("ethereal") then
+	table.insert(oneway_list, {"snowbrick", "Snow Brick", "oneway_face.png^[colorize:#EEEFFF:200", "ethereal_brick_snow.png", "ethereal_brick_snow.png", })
+	table.insert(oneway_list, {"icebrick", "Ice Brick", "oneway_face.png^[colorize:#A9BED9:200", "ethereal_brick_ice.png", "ethereal_brick_ice.png", })
+end
 
 for i in ipairs(oneway_list) do
 	local name = oneway_list[i][1]
 	local description = oneway_list[i][2]
 	local image1 = oneway_list[i][3]
 	local image2 = oneway_list[i][4]
+	local image3 = oneway_list[i][5]
 
-	minetest.register_node("abriglass:oneway_glass_"..name, {
-		description = description.." One-Way Glass",
+	minetest.register_node("abriglass:oneway_glass_one_"..name, {
+		description = description.." One-Way Glass One Side",
 		drawtype = "nodebox",
 		paramtype = "light",
 		paramtype2 = "facedir",
@@ -171,6 +187,75 @@ for i in ipairs(oneway_list) do
 	})
 end
 
+
+-- one-way two sides glass
+
+for i in ipairs(oneway_list) do
+	local name = oneway_list[i][1]
+	local description = oneway_list[i][2]
+	local image1 = oneway_list[i][3]
+	local image2 = oneway_list[i][4]
+	local image3 = oneway_list[i][5]
+        
+	minetest.register_node("abriglass:oneway_glass_two_"..name, {
+		description = description.." One-Way Glass Two Sides",
+		drawtype = "nodebox",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		node_box = {
+			type = "fixed",
+			fixed = {
+				{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+			},
+		},
+		groups = {cracky = 3},
+		tiles = {image2, -- up
+				 "abriglass_"..image1, -- down
+				 "abriglass_oneway_plain_glass.png", -- right
+				 "abriglass_oneway_plain_glass.png", -- left
+				 "abriglass_"..image1, -- back
+				 image3, -- front
+				 }, 
+		is_ground_content = false,
+		sunlight_propagates = true,
+		inventory_image = minetest.inventorycube("abriglass_"..image1)
+	})
+end
+
+
+-- one-way three sides glass
+
+for i in ipairs(oneway_list) do
+	local name = oneway_list[i][1]
+	local description = oneway_list[i][2]
+	local image1 = oneway_list[i][3]
+	local image2 = oneway_list[i][4]
+	local image3 = oneway_list[i][5]
+        
+	minetest.register_node("abriglass:oneway_glass_three_"..name, {
+		description = description.." One-Way Glass Three Sides",
+		drawtype = "nodebox",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		node_box = {
+			type = "fixed",
+			fixed = {
+				{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+			},
+		},
+		groups = {cracky = 3},
+		tiles = {image2, -- up
+				 "abriglass_"..image1, -- down
+				 image3, -- right
+				 "abriglass_"..image1, -- left
+				 "abriglass_"..image1, -- back
+				 image3, -- front
+				 }, 
+		is_ground_content = false,
+		sunlight_propagates = true,
+		inventory_image = minetest.inventorycube("abriglass_"..image1)
+	})
+end
 
 -- normal nodes to match one-way glass
 minetest.register_node("abriglass:oneway_wall_dark", {
